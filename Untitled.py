@@ -221,7 +221,7 @@ while jogar == "sim":
     import window
     letra = window.textinput("Inserir Letra", "Insira uma letra")
     if letra in palavra:
-        palavra.find(letra)
+        lugardaletra = palavra.find(letra)
         
 
 janela.exitonclick()

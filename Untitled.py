@@ -191,9 +191,9 @@ def Perna1 ():
     lapis.penup()
     lapis.setpos(-100, -30)
     lapis.pendown()
-    lapis.left(135)
+    lapis.right(45)
     lapis.forward(50)
-    lapis.right(135)
+    lapis.left(45)
 
 def Perna2 ():
     lapis.penup()
@@ -242,13 +242,31 @@ while lista != [] and boneco < 6:
         tamanho = len(palavra) -1
     else:
         tamanho = len(palavra)
-    while boneco <= 6 and qt < tamanho:
+    while boneco < 6 and qt < tamanho:
         lapis.penup()
         lapis.setpos(-200, -250)
         lapis.pendown()
         letra = janela.textinput("Inserir Letra", "Insira uma letra")
+        alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        while letra not in alfabeto:
+            letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
+            while len(letra) > 1:
+                letra = janela.textinput("Inserir Letra", "por favor, insira apenas uma letra:")
+            while letra in letras:
+                letra = janela.textinput("Inserir Letra", "Essa letra já foi, escolha outra:")
+        while len(letra) > 1:
+            letra = janela.textinput("Inserir Letra", "por favor, insira apenas uma letra:")
+            while letra not in alfabeto:
+                letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
+            while letra in letras:
+                letra = janela.textinput("Inserir Letra", "Essa letra já foi, escolha outra:")
         while letra in letras:
             letra = janela.textinput("Inserir Letra", "Essa letra já foi, escolha outra:")
+            while letra not in alfabeto:
+                letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
+            while len(letra) > 1:
+                letra = janela.textinput("Inserir Letra", "por favor, insira apenas uma letra:")
+
         letras.append(letra)
         if letra in palavra or (letra == "a" and palavra.find("ã") != -1) or (letra == "e" and palavra.find("E") != -1) or (letra == "i"and palavra.find("í") != -1) or (letra == "o" and palavra.find("ô") != -1) or (letra == "o" and palavra.find("ó") != -1) or (letra == "b" and palavra.find("B") != -1) or (letra == "s" and palavra.find("S") != -1) or (letra == "p" and palavra.find("P") != -1):
             if letra in palavra:
@@ -444,12 +462,13 @@ while lista != [] and boneco < 6:
         elif boneco == 5:
             Perna2 ()
             boneco = 6
-            lapis.clear()
-            lapis.penup()
-            lapis.setpos(-250, 0)
-            lapis.write("Fim do jogo", font = ("Arial", 100))
-
-lapis.write("Você ganhou!", font = ("Arial", 100))
+if boneco == 6:
+     lapis.clear()
+     lapis.penup()
+     lapis.setpos(-250, 0)
+     lapis.write("Fim do jogo", font = ("Arial", 100))
+else:
+    lapis.write("Você ganhou!", font = ("Arial", 100))
 #            
             
         

@@ -223,8 +223,9 @@ def Tracinho(palavra):
             lapis.pendown()
         else:
             TracinhoDaLetra()
+jogardnv = "sim"
 boneco = 0
-while lista != [] and boneco < 6:
+while lista != [] and boneco < 6 and jogardnv == "sim":
     #escolher palavra da lista
     lapis.clear()
     DesenharForca()
@@ -462,13 +463,14 @@ while lista != [] and boneco < 6:
         elif boneco == 5:
             Perna2 ()
             boneco = 6
+    jogardnv = str(input("Quer jogar mais uma vez?"))
 if boneco == 6:
      lapis.clear()
      lapis.penup()
      lapis.setpos(-250, 0)
      lapis.write("Fim do jogo", font = ("Arial", 100))
 else:
-    lapis.write("Você ganhou!", font = ("Arial", 100))
+    lapis.write("O jogo acabou", font = ("Arial", 100))
 #            
             
         

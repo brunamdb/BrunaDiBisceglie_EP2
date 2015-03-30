@@ -239,6 +239,7 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
     letras = []
     boneco = 0
     qt = 0
+    n = 0
     if " "in palavra:
         tamanho = len(palavra) -1
     else:
@@ -248,6 +249,7 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         lapis.setpos(-200, -250)
         lapis.pendown()
         letra = janela.textinput("Inserir Letra", "Insira uma letra")
+        n = n +1
         alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         while letra not in alfabeto:
             letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
@@ -463,6 +465,8 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         elif boneco == 5:
             Perna2 ()
             boneco = 6
+    media = (tamanho/n) * 100
+    print ("A porcentagem média de chutes para acertar essa palavra foi:", media)
     jogardnv = str(input("Quer jogar mais uma vez?"))
 if boneco == 6:
      lapis.clear()
@@ -471,11 +475,4 @@ if boneco == 6:
      lapis.write("Fim do jogo", font = ("Arial", 100))
 else:
     lapis.write("O jogo acabou", font = ("Arial", 100))
-#            
-            
-        
-
-
-
-
 janela.exitonclick()

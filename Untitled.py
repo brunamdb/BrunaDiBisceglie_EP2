@@ -139,6 +139,7 @@ lapis.forward(90)
 lapis.backward(40)
 lapis.right(110)
 lapis.forward(40)
+lapis.right(92)
 #limpar a tela
 import time
 time.sleep(3)
@@ -148,8 +149,8 @@ lapis.clear()
 def DesenharForca ():
     lapis.penup()
     lapis.setpos(-250, -250)
+    lapis.left(90)
     lapis.pendown()
-    lapis.right(92)
     lapis.forward(500)
     lapis.right(90)
     lapis.forward(150)
@@ -225,6 +226,8 @@ def Tracinho(palavra):
             TracinhoDaLetra()
 jogardnv = "sim"
 boneco = 0
+lapis.right(90)
+
 while lista != [] and boneco < 6 and jogardnv == "sim":
     #escolher palavra da lista
     lapis.clear()
@@ -234,7 +237,7 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
     from random import choice
     palavra = choice (lista)
     print (palavra)
-    lista = lista.remove(palavra)
+    lista.remove(palavra)
     Tracinho(palavra)
     letras = []
     boneco = 0
@@ -249,7 +252,6 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         lapis.setpos(-200, -250)
         lapis.pendown()
         letra = janela.textinput("Inserir Letra", "Insira uma letra")
-        n = n +1
         alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         while letra not in alfabeto:
             letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
@@ -271,15 +273,16 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 letra = janela.textinput("Inserir Letra", "por favor, insira apenas uma letra:")
 
         letras.append(letra)
-        if letra in palavra or (letra == "a" and palavra.find("ã") != -1) or (letra == "e" and palavra.find("E") != -1) or (letra == "i"and palavra.find("í") != -1) or (letra == "o" and palavra.find("ô") != -1) or (letra == "o" and palavra.find("ó") != -1) or (letra == "b" and palavra.find("B") != -1) or (letra == "s" and palavra.find("S") != -1) or (letra == "p" and palavra.find("P") != -1):
+        if letra in palavra or (letra == "a" and palavra.find("ã") != -1) or (letra == "e" and palavra.find("E") != -1) or (letra == "i"and palavra.find("í") != -1) or (letra == "o" and palavra.find("ô") != -1) or (letra == "o" and palavra.find("ó") != -1) or (letra == "b" and palavra.find("B") != -1) or (letra == "s" and palavra.find("S") != -1) or (letra == "p" and palavra.find("P") != -1) or (letra == "c" and palavra.find("C") != -1):
+            n = n +1
             if letra in palavra:
                 caso1 = 0
                 ir = 1
-                while ir > 0:
+                while ir >= 0:
                     nletras = len(palavra) 
                     voltar = nletras*20
                     ir = (palavra.find(letra, caso1))*20
-                    if ir > 0:
+                    if ir >= 0:
                         caso1 = palavra.find(letra, caso1) +1
                         lapis.penup()
                         lapis.forward(ir)
@@ -291,11 +294,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("ã") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("ã", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("ã", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -307,11 +310,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("A") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("A", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("A", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -323,11 +326,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("E") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("E", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("E", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -339,11 +342,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("í") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("í", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("í", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -355,11 +358,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("ô") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("ô", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("ô", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -370,11 +373,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("ó") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("ó", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("ó", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -386,11 +389,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("B") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("B", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("B", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -402,11 +405,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("C") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("C", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("C", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -418,11 +421,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("S") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("S", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("S", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -434,11 +437,11 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
                 if palavra.find("P") != -1:
                     caso1 = 0
                     ir = 1
-                    while ir > 0:
+                    while ir >= 0:
                         nletras = len(palavra) 
                         voltar = nletras*20
                         ir = (palavra.find("P", caso1))*20
-                        if ir > 0:
+                        if ir >= 0:
                             caso1 = palavra.find("P", caso1) +1
                             lapis.penup()
                             lapis.forward(ir)
@@ -465,7 +468,7 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         elif boneco == 5:
             Perna2 ()
             boneco = 6
-    media = (tamanho/n) * 100
+    media = (n/tamanho) * 100
     print ("A porcentagem média de chutes para acertar essa palavra foi:", media)
     jogardnv = str(input("Quer jogar mais uma vez?"))
 if boneco == 6:

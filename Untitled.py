@@ -227,7 +227,10 @@ def Tracinho(palavra):
 jogardnv = "sim"
 boneco = 0
 lapis.right(90)
-
+erros = 0
+def erro(erros):
+    b = erros/(11-len(lista))
+    print("A sua media de erros é:", b)
 while lista != [] and boneco < 6 and jogardnv == "sim":
     #escolher palavra da lista
     lapis.clear()
@@ -236,15 +239,18 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
     
     from random import choice
     palavra = choice (lista)
-    print (palavra)
     lista.remove(palavra)
     Tracinho(palavra)
     letras = []
     boneco = 0
     qt = 0
     n = 0
+    chutes = 0
     if " "in palavra:
-        tamanho = len(palavra) -1
+        if palavra == "São Bernardo do Campo":
+            tamanho = len(palavra) -3
+        else:
+            tamanho = len(palavra) -1
     else:
         tamanho = len(palavra)
     while boneco < 6 and qt < tamanho:
@@ -252,6 +258,7 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         lapis.setpos(-200, -250)
         lapis.pendown()
         letra = janela.textinput("Inserir Letra", "Insira uma letra")
+        chutes = chutes + 1
         alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         while letra not in alfabeto:
             letra = janela.textinput("Inserir Letra", "Por favor, digite um caracter verdadeiro")
@@ -274,7 +281,6 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
 
         letras.append(letra)
         if letra in palavra or (letra == "a" and palavra.find("ã") != -1) or (letra == "e" and palavra.find("E") != -1) or (letra == "i"and palavra.find("í") != -1) or (letra == "o" and palavra.find("ô") != -1) or (letra == "o" and palavra.find("ó") != -1) or (letra == "b" and palavra.find("B") != -1) or (letra == "s" and palavra.find("S") != -1) or (letra == "p" and palavra.find("P") != -1) or (letra == "c" and palavra.find("C") != -1):
-            n = n +1
             if letra in palavra:
                 caso1 = 0
                 ir = 1
@@ -453,23 +459,28 @@ while lista != [] and boneco < 6 and jogardnv == "sim":
         elif boneco == 0:
             Cabeça()
             boneco = 1
+            erros += 1
         elif boneco ==1:
             Corpo()
             boneco =2
+            erros += 1
         elif boneco==2:
             Braço1()
             boneco = 3
+            erros += 1
         elif boneco == 3:
             Braço2()
             boneco = 4
+            erros+= 1
         elif boneco == 4:
             Perna1 ()
             boneco = 5
+            erros += 1
         elif boneco == 5:
             Perna2 ()
             boneco = 6
-    media = (n/tamanho) * 100
-    print ("A porcentagem média de chutes para acertar essa palavra foi:", media)
+            erros += 1
+    erro(erros)
     jogardnv = str(input("Quer jogar mais uma vez?"))
 if boneco == 6:
      lapis.clear()
@@ -477,5 +488,9 @@ if boneco == 6:
      lapis.setpos(-250, 0)
      lapis.write("Fim do jogo", font = ("Arial", 100))
 else:
-    lapis.write("O jogo acabou", font = ("Arial", 100))
+    lapis.clear()
+    lapis.penup()
+    lapis.setpos(-250, 0)
+    lapis.write("O jogo acabou", font = ("Arial", 90))
 janela.exitonclick()
+
